@@ -21,7 +21,7 @@ def main():
     # Connect to Redis
     redis_host = os.getenv('REDIS_HOST', 'redis')
     redis_password = os.getenv('REDIS_PASSWORD', 'asd123')
-    redis_client = redis.StrictRedis(host=redis_host, port=6379, password=asd123, db=0, decode_responses=True)
+    redis_client = redis.StrictRedis(host=redis_host, port=6379, password='asd123', db=0, decode_responses=True)
 
     message = "Hello RabbitMQ with Redis!"
     redis_client.set('last_message', message)
