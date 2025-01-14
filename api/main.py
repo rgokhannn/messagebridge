@@ -30,7 +30,7 @@ class Message(BaseModel):
 def send_message(msg: Message):
     message = msg.message
     rabbitmq_user = os.getenv('RABBITMQ_USER', 'rabbitmq_user')
-    rabbitmq_pass = os.getenv('RABBITMQ_PASS', 'your_rabbitmq_password')
+    rabbitmq_pass = os.getenv('RABBITMQ_PASS', 'asd123')
     rabbitmq_host = os.getenv('RABBITMQ_HOST', 'rabbitmq')
 
     credentials = pika.PlainCredentials(rabbitmq_user, rabbitmq_pass)

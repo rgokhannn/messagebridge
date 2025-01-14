@@ -22,7 +22,7 @@ def main():
     # Connect to RabbitMQ
     rabbitmq_host = os.getenv('RABBITMQ_HOST', 'rabbitmq')
     rabbitmq_user = os.getenv('RABBITMQ_USER', 'rabbitmq_user')
-    rabbitmq_pass = os.getenv('RABBITMQ_PASS', 'your_rabbitmq_password')
+    rabbitmq_pass = os.getenv('RABBITMQ_PASS', 'asd123')
 
     credentials = pika.PlainCredentials(rabbitmq_user, rabbitmq_pass)
     connection = pika.BlockingConnection(
