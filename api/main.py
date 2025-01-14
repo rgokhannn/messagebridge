@@ -34,7 +34,7 @@ def send_message(msg: Message):
     rabbitmq_host = os.getenv('RABBITMQ_HOST', 'rabbitmq')
 
     credentials = pika.PlainCredentials(rabbitmq_user, rabbitmq_pass)
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host, 5672, '/', credentials=credentials))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host, credentials=credentials))
     channel = connection.channel()
     channel.queue_declare(queue='hello')
     channel.basic_publish(exchange='', routing_key='hello', body=message)
