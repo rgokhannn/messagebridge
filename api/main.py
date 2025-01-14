@@ -9,6 +9,7 @@ app = FastAPI()
 
 # Redis configuration
 redis_host = os.getenv('REDIS_HOST', 'redis')
+redis_password = os.getenv('REDIS_PASSWORD', 'your_redis_password')
 redis_client = redis.StrictRedis(host=redis_host, port=6379, db=0)
 
 # MongoDB configuration
