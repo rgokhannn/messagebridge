@@ -10,7 +10,7 @@ def callback(ch, method, properties, body):
 
     # Store the message to MongoDB
     mongo_user = os.getenv('MONGO_USER', 'myUser')
-    mongo_pass = os.getenv('MONGO_PASS', 'myPassword')
+    mongo_pass = os.getenv('MONGO_PASS', 'asd123')
     mongo_host = os.getenv('MONGODB_HOST', 'mongodb')
     client = MongoClient(f'mongodb://{mongo_host}:27017/')
     db = client.my_database
