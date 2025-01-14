@@ -63,6 +63,8 @@ services:
       - redis
     networks:
       - app-network
+    env_file:
+      - .env
 
   consumer:
     build:
@@ -74,6 +76,8 @@ services:
       - mongodb
     networks:
       - app-network
+    env_file:
+      - .env
 
   api:
     build: 
@@ -88,6 +92,8 @@ services:
       - mongodb
     networks:
       - app-network
+    env_file:
+      - .env
 
 volumes:
   mongo-data:
