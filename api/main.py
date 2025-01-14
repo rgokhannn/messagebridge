@@ -4,6 +4,9 @@ import pika
 import redis
 from pymongo import MongoClient
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI()
 
@@ -36,7 +39,7 @@ def send_message(msg: Message):
     channel.queue_declare(queue='hello')
     channel.basic_publish(exchange='', routing_key='hello', body=message)
     connection.close()
-    
+
     redis_client.set('last_message', message)
     return {"status": "Message sent and stored in Redis", "message": message}
 
