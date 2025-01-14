@@ -26,12 +26,17 @@ class Message(BaseModel):
 @app.post("/send")
 def send_message(msg: Message):
     message = msg.message
+    rabbitmq_user = os.getenv('RABBITMQ_USER', 'rabbitmq_user')
+    rabbitmq_pass = os.getenv('RABBITMQ_PASS', 'your_rabbitmq_password')
     rabbitmq_host = os.getenv('RABBITMQ_HOST', 'rabbitmq')
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host))
+
+    credentials = pika.PlainCredentials(rabbitmq_user, rabbitmq_pass)
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host, credentials=credentials))
     channel = connection.channel()
     channel.queue_declare(queue='hello')
     channel.basic_publish(exchange='', routing_key='hello', body=message)
     connection.close()
+    
     redis_client.set('last_message', message)
     return {"status": "Message sent and stored in Redis", "message": message}
 
