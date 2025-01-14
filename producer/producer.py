@@ -7,7 +7,11 @@ def main():
     rabbitmq_host = os.getenv('RABBITMQ_HOST', 'rabbitmq')
     rabbitmq_user = os.getenv('RABBITMQ_USER', 'rabbitmq_user')
     rabbitmq_pass = os.getenv('RABBITMQ_PASS', 'your_rabbitmq_password')
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host=rabbitmq_host))
+
+    credentials = pika.PlainCredentials(rabbitmq_user, rabbitmq_pass)
+    connection = pika.BlockingConnection(
+        pika.ConnectionParameters(host=rabbitmq_host, credentials=credentials)
+    )
     channel = connection.channel()
     channel.queue_declare(queue='hello')
 
