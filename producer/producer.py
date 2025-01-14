@@ -7,9 +7,9 @@ load_dotenv()
 
 def main():
     # Connect to RabbitMQ
-    rabbitmq_host = os.getenv('RABBITMQ_HOST', 'rabbitmq')
-    rabbitmq_user = os.getenv('RABBITMQ_USER', 'rabbitmq_user')
-    rabbitmq_pass = os.getenv('RABBITMQ_PASS', 'asd123')
+    rabbitmq_host = 'rabbitmq'
+    rabbitmq_user = 'rabbitmq_user'
+    rabbitmq_pass = 'asd123'
 
     credentials = pika.PlainCredentials(rabbitmq_user, rabbitmq_pass)
     connection = pika.BlockingConnection(
