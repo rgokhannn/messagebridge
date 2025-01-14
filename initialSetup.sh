@@ -6,6 +6,9 @@ set -e
 echo "Updating system packages..."
 sudo apt update && sudo apt upgrade -y
 
+echo "Installating Git..."
+sudo apt install -y git
+
 echo "Installing Docker..."
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -

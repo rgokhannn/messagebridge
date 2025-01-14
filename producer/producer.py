@@ -10,6 +10,8 @@ def main():
     channel.queue_declare(queue='hello')
 
     # Connect to Redis
+    redis_host = os.getenv('REDIS_HOST', 'redis')
+    redis_password = os.getenv('REDIS_PASSWORD', 'your_redis_password')
     redis_client = redis.StrictRedis(host='redis', port=6379, db=0)
 
     message = "Hello RabbitMQ with Redis!"
