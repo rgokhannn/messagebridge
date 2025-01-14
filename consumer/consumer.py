@@ -26,7 +26,7 @@ def main():
 
     credentials = pika.PlainCredentials(rabbitmq_user, rabbitmq_pass)
     connection = pika.BlockingConnection(
-        pika.ConnectionParameters(host=rabbitmq_host, credentials=credentials)
+        pika.ConnectionParameters(host=rabbitmq_host, 5672, '/', credentials=credentials)
     )
     channel = connection.channel()
     channel.queue_declare(queue='hello')
